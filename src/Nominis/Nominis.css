@@ -85,3 +85,20 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.word-list-div{
+    display: flex;
+    gap: 30px;
+    margin-top: 1rem;
+}
+
+.word-list-div div {
+    width: 6rem;
+    height: 3rem;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
