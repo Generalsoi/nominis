@@ -24,7 +24,7 @@ const shuffle = (array) => {
 };
 
 const Nominis = () => {
-  const word = "I am a fine boy";
+  const word = "I brush my teeth.";
   const wordList = word.split(" ");
   const newWordList = shuffle(wordList);
 
@@ -51,10 +51,13 @@ const Nominis = () => {
             <div className="input-bar">{content}</div>
           </div>
         </div>
-        <div className="word-list-div">
-          {newWordList.map((el) => (
-            <div onClick={() => setContent(content + " " + el)}>{el}</div>
-          ))}
+
+        <div className="word-list">
+          <div className="word-list-div">
+            {newWordList.map((el) => (
+              <div onClick={() => setContent(content + " " + el)}>{el}</div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
