@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Nominis.css";
 import Header from "../Header/Header";
 import Icon3 from "../Assets/Images/Icono3.png";
@@ -24,9 +24,11 @@ const shuffle = (array) => {
 };
 
 const Nominis = () => {
-  const word = "I brush my teeth";
+  const word = "I am a fine boy";
   const wordList = word.split(" ");
   const newWordList = shuffle(wordList);
+
+  const [content, setContent] = useState(" ");
 
   return (
     <div className="nominis">
@@ -43,16 +45,16 @@ const Nominis = () => {
           </div>
 
           <div>
-            <div>
+            <div onClick={() => setContent(" ")}>
               <img src={Icon3} alt="Icon3" />
             </div>
-            <div className="input-bar"></div>
-            <div className="word-list-div">
-              {newWordList.map((el) => (
-                <div>{el}</div>
-              ))}
-            </div>
+            <div className="input-bar">{content}</div>
           </div>
+        </div>
+        <div className="word-list-div">
+          {newWordList.map((el) => (
+            <div onClick={() => setContent(content + " " + el)}>{el}</div>
+          ))}
         </div>
       </div>
     </div>
