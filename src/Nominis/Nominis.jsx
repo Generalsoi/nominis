@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Nominis.css";
 import Header from "../Header/Header";
 import Icon3 from "../Assets/Images/Icono3.png";
+import ClickButton from "../ClickButtons/ClickButton";
 
 const shuffle = (array) => {
   let currentIndex = array.length,
@@ -23,12 +24,13 @@ const shuffle = (array) => {
   return array;
 };
 
-const Nominis = () => {
-  const word = "I brush my teeth.";
-  const wordList = word.split(" ");
-  const newWordList = shuffle(wordList);
+const word = "I brush my teeth.";
+const wordList = word.split(" ");
+const newWordList = shuffle(wordList);
 
+const Nominis = () => {
   const [content, setContent] = useState(" ");
+  const [reset, setReset] = useState(false);
 
   return (
     <div className="nominis">
@@ -45,7 +47,12 @@ const Nominis = () => {
           </div>
 
           <div>
-            <div onClick={() => setContent(" ")}>
+            <div
+              onClick={() => {
+                setContent(" ");
+                setReset(true);
+              }}
+            >
               <img src={Icon3} alt="Icon3" />
             </div>
             <div className="input-bar">{content}</div>
@@ -54,8 +61,16 @@ const Nominis = () => {
 
         <div className="word-list">
           <div className="word-list-div">
-            {newWordList.map((el) => (
-              <div onClick={() => setContent(content + " " + el)}>{el}</div>
+            {newWordList.map((el, index) => (
+              <ClickButton
+                key={index}
+                textContent={el}
+                setContent={setContent}
+                content={content}
+                reset={reset}
+                setReset={setReset}
+              />
+              // <div onClick={() => setContent(content + " " + el)}>{el}</div>
             ))}
           </div>
         </div>
